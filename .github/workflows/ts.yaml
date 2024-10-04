@@ -1,4 +1,4 @@
-name: cpp
+name: ts
 
 # Run this workflow every time a new commit pushed to your repository
 on:
@@ -6,12 +6,9 @@ on:
   pull_request:
   schedule: [cron: "40 1 * * *"]
 
-env:
-  RUSTFLAGS: -Dwarnings
-
 jobs:
-  cc-test:
-    name: cc test case
+  vsce:
+    name: visual studio extension package
     runs-on: ubuntu-latest
     container: ${{ matrix.container }}
     timeout-minutes: 45
@@ -31,6 +28,6 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            LICENSE
+            LICENSE.TXT
             ccls-*.vsix
             
