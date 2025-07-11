@@ -466,6 +466,9 @@ export class ServerContext implements Disposable {
         provideCodeLenses: (doc, token, next) => this.provideCodeLens(doc, token, next),
         provideDocumentSemanticTokens: (doc, token, next) =>
           this.semanticTokenProvider.provideDocumentSemanticTokens(doc, token),
+	provideHover:(doc, position, token, next) => {
+	  return { contents: ['']};
+        },
         provideDocumentRangeSemanticTokens: (doc, range, token, next) =>
           this.semanticTokenProvider.provideRangeSemanticTokens(doc, range, token)
       },
