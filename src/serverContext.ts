@@ -399,7 +399,7 @@ export class ServerContext implements Disposable {
     const decorationOpts: DecorationRenderOptions = {
       after: {
         color: new ThemeColor('editorCodeLens.foreground'),
-        fontStyle: 'italic',
+        // fontStyle: 'normal',
       },
       rangeBehavior: DecorationRangeBehavior.ClosedClosed,
     };
@@ -439,7 +439,14 @@ export class ServerContext implements Disposable {
   }
 
   private initClient(): LanguageClient {
-    const args = this.cliConfig.launchArgs;
+    let args = this.cliConfig.launchArgs;
+
+    if (this.cliConfig.launchCommand === "ccls" && this.cliConfig.launchArgs.length === 0) {
+      const obj = {
+        "init_options": { "cache": { "retainInMemory": 0 } }
+      };
+      args = ['--init=' + JSON.stringify(obj)];
+    }
 
     const serverOptions: ServerOptions = async (): Promise<cp.ChildProcess> => {
       const child = cp.spawn(this.cliConfig.launchCommand, args);
