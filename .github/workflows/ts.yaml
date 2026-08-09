@@ -28,5 +28,5 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            ccls-*.vsix
+            myCcls-*.vsix
 
