@@ -473,6 +473,10 @@ export class ServerContext implements Disposable {
         provideCodeLenses: (doc, token, next) => this.provideCodeLens(doc, token, next),
         provideDocumentSemanticTokens: (doc, token, next) =>
           this.semanticTokenProvider.provideDocumentSemanticTokens(doc, token),
+                provideCompletionItem: async (document, position, context, token, next) => {
+          return new vscode.CompletionList([], true);
+        },
+
 	provideHover:(doc, position, token, next) => {
 	  return { contents: ['']};
         },
