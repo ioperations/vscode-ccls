@@ -1,7 +1,7 @@
 {
   "name": "myCcls",
   "description": "C/C++/ObjC language server supporting cross references, hierarchies, completion and semantic highlight",
-  "author": "ccls-project",
+  "author": "ccls",
   "license": "MIT",
   "version": "1.2.31",
   "publisher": "ccls-project",
